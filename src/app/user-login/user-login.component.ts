@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import {  UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-login',
@@ -17,36 +18,15 @@ export class UserLoginComponent implements OnInit {
 
   usrObj: object;
 
-  constructor( private _router: Router ) {
-    this.usrObj =[ 
-      {
-      "username": 'admin',
-      'password': 'admin123',
-      'id': '123',
-      'email': 'admin@gmail.com',
-      "department": {
-        "name":"dept1",
-        "id": 1,
-        "email":"dept1@gmail.com"
-      }
-      },
-      {
-        "username": 'john',
-        'password': 'john124',
-        'id': '124',
-        'email': 'john@gmail.com',
-        "department": {
-          "name":"dept2",
-          "id": 2,
-          "email":"dept2@gmail.com"
-        }
-      }
-  ];
-    localStorage.setItem('users', JSON.stringify(this.usrObj));
+  constructor( private _router: Router, private usersService:UsersService ) {
+    
   }
 
   ngOnInit() {
-    
+    console.log(this.usersService.cars);
+    this.usrObj = this.usersService.getUser();
+    console.log(this.usrObj);
+    localStorage.setItem('users', JSON.stringify(this.usrObj));
   }
 
   loginUser() : void{
