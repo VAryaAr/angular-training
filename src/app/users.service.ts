@@ -13,19 +13,15 @@ export class UsersService {
   cars = [
     'Ford','Chevrolet','Buick'
   ];
+  userData = {};
 
   configUrl = 'http://www.mocky.io/v2/5b5822d93000000206fe4d60';
 
   getUser() {
     return this.http.get(this.configUrl).subscribe(data => {
       console.log("received", data);
+      this.userData = data;
+      return this.userData;
     });
-    
-    // this.http.get('http://www.mocky.io/v2/5b5822d93000000206fe4d60')
-    // .map((res: Response) => res.json().response);
-
-    // this.http.get("http://www.mocky.io/v2/5b5822d93000000206fe4d60").
-    // map((response) ⇒ response.json()).
-    // subscribe((data) ⇒ console.log(data));
   }
 }
