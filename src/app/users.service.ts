@@ -18,10 +18,6 @@ export class UsersService {
   configUrl = 'http://www.mocky.io/v2/5b5822d93000000206fe4d60';
 
   getUser() {
-    return this.http.get(this.configUrl).subscribe(data => {
-      console.log("received", data);
-      this.userData = data;
-      return this.userData;
-    });
+    return this.http.get(this.configUrl);
   }
 }

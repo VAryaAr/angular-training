@@ -24,9 +24,11 @@ export class UserLoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.usersService.cars);
-    this.usrObj = this.usersService.getUser();
-    console.log(this.usersService.userData);
-    localStorage.setItem('users', JSON.stringify(this.usersService.userData));
+    this.usersService.getUser().subscribe(response => {
+      this.usrObj = response;
+      console.log(this.usrObj);
+      localStorage.setItem('users', JSON.stringify(this.usrObj));
+    });
   }
 
   loginUser() : void{
