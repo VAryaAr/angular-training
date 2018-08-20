@@ -7,8 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { UsersService } from './users.service';
+import { AppRoutingModule } from './app-routing.module';
+import { UsersService } from './service/users.service';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({

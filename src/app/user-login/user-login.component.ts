@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import {  UsersService } from '../users.service';
+import {  UsersService } from '../service/users.service';
 
 @Component({
   selector: 'app-user-login',
@@ -21,10 +21,8 @@ export class UserLoginComponent implements OnInit {
   constructor( private _router: Router, private usersService:UsersService ) {
     
   }
-
   ngOnInit() {
-    console.log(this.usersService.cars);
-    this.usersService.getUser().subscribe(response => {
+    this.usersService.userData().subscribe(response => {
       this.usrObj = response;
       console.log(this.usrObj);
       localStorage.setItem('users', JSON.stringify(this.usrObj));
